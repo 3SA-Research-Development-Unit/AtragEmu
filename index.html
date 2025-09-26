@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Emulation</title>
+    <link rel="stylesheet" href="resources/css/reset.css">
+    <link rel="stylesheet" href="resources/css/global.css">
+    <link rel="stylesheet" href="resources/css/device-frame.css">
+    <link rel="stylesheet" href="resources/css/screen.css">
+    <link rel="stylesheet" href="resources/css/navbar.css">
+</head>
+
+<body>
+    <div class="device-frame">
+        <div class="screen">
+            <div class="content" id="content">
+                <nav class="navbar">
+                    <div class="navbar-start">
+                        <img src="resources/icons/windows-icon.png" alt="" srcset="">
+                        <div>Start</div>
+                    </div>
+                </nav>
+                <section class="home-list" aria-label="Home List">
+                    <div class="home-date">
+                        <span class="icon-placeholder date-icon" aria-hidden="true"><img src="resources/icons/clock.png"
+                                alt="Clock"></span>
+                        <div class="date-content">
+                            <div class="home-date-day">Tuesday,</div>
+                            <div class="home-date-line">January 01, 2008</div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li class="home-item"><span class="icon-placeholder" aria-hidden="true"><img
+                                    src="resources/icons/user.png" alt="User"></span>
+                            <div class="item-text">PlayerName [TAG]</div>
+                        </li>
+                        <li class="home-item">
+                            <a href="applications.html" style="text-decoration: none; display: contents;">
+                                <span class="icon-placeholder" aria-hidden="true"><img src="resources/icons/apps.png"
+                                        alt="Apps"></span>
+                                <div class="item-text">Applications</div>
+                            </a>
+                        </li>
+                        <li class="home-item">
+                            <a href="settings.html" style="text-decoration: none; display: contents;">
+                                <span class="icon-placeholder" aria-hidden="true"><img
+                                        src="resources/icons/settings.png" alt="Settings"></span>
+                                <div class="item-text">Settings</div>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+            <div class="screen-footer" role="contentinfo" aria-hidden="true"></div>
+        </div>
+        <div class="texture-overlay"></div>
+    </div>
+    <script>
+        (function () {
+            function pad(n) { return n < 10 ? '0' + n : n; }
+            function formatParts(d) {
+                const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                return {
+                    dayName: days[d.getDay()] + ',',
+                    dateLine: months[d.getMonth()] + ' ' + pad(d.getDate()) + ', ' + d.getFullYear()
+                };
+            }
+
+            const dateEl = document.querySelector('.home-date');
+            function updateDate() {
+                const now = new Date();
+                if (dateEl) {
+                    const day = dateEl.querySelector('.home-date-day');
+                    const line = dateEl.querySelector('.home-date-line');
+                    const parts = formatParts(now);
+                    if (day) day.textContent = parts.dayName;
+                    if (line) line.textContent = parts.dateLine;
+                }
+            }
+            updateDate();
+            setInterval(updateDate, 60 * 1000);
+        })();
+    </script>
+</body>
+
+</html>

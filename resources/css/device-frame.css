@@ -1,0 +1,9 @@
+.device-frame {
+    position: relative;
+    width: 509px;
+    height: 889px;
+    background-image: url('./../device_frame.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}

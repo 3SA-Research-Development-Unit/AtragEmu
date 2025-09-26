@@ -1,0 +1,30 @@
+.app-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 16px 8px;
+    margin: 0 auto;
+    width: calc(100% - 16px);
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.app-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    position: relative;
+    cursor: pointer;
+    aspect-ratio: 1;
+}
+
+.app-item:active {
+    background: rgba(0,84,227,0.1);
+}
+
+.app-icon {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
